@@ -3,7 +3,7 @@ package pipe.handler;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.lenient;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -52,14 +52,14 @@ public class MouseHandlerTest {
     public void setup() {
         handler = new PetriNetMouseHandler(mockModel, mockController, mockTab);
 
-        when(mockEvent.getPoint()).thenReturn(new Point(0, 0));
-        when(mockUtilities.isLeftMouse(mockEvent)).thenReturn(true);
-        when(mockModel.getSelectedAction()).thenReturn(mockAction);
+        lenient().when(mockEvent.getPoint()).thenReturn(new Point(0, 0));
+        lenient().when(mockUtilities.isLeftMouse(mockEvent)).thenReturn(true);
+        lenient().when(mockModel.getSelectedAction()).thenReturn(mockAction);
     }
 
     @Test
     public void doesNoActionIfAnimating() {
-        when(mockModel.isInAnimationMode()).thenReturn(true);
+        lenient().when(mockModel.isInAnimationMode()).thenReturn(true);
         handler.mousePressed(mockEvent);
         verify(mockAction, never()).doAction(any(MouseEvent.class), any(PetriNetController.class));
     }

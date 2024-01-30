@@ -3,7 +3,7 @@ package pipe.controllers.arcCreator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.lenient;
 
 import java.util.LinkedList;
 
@@ -48,9 +48,9 @@ public class InhibitorCreatorTest {
 
     @Before
     public void setUp() {
-        when(mockController.getActivePetriNetController()).thenReturn(mockPetriNetController);
-        when(mockPetriNetController.getPetriNet()).thenReturn(mockNet);
-        when(mockView.getCurrentTab()).thenReturn(mockTab);
+        lenient().when(mockController.getActivePetriNetController()).thenReturn(mockPetriNetController);
+        lenient().when(mockPetriNetController.getPetriNet()).thenReturn(mockNet);
+        lenient().when(mockView.getCurrentTab()).thenReturn(mockTab);
         creator = new InhibitorCreator();
     }
 

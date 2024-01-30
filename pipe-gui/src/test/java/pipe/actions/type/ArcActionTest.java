@@ -76,10 +76,10 @@ public class ArcActionTest {
     public void setUp() {
         when(mockController.getPetriNet()).thenReturn(mockNet);
 
-        when(mockApplicationView.getSelectedTokenName()).thenReturn(ACTIVE_TOKEN_ID);
+        // when(mockApplicationView.getSelectedTokenName()).thenReturn(ACTIVE_TOKEN_ID);
 
         when(mockController.getPetriNetTab()).thenReturn(mockTab);
-        when(mockController.getSelectedToken()).thenReturn(ACTIVE_TOKEN_ID);
+        // when(mockController.getSelectedToken()).thenReturn(ACTIVE_TOKEN_ID);
 
         when(mockApplicationController.getActivePetriNetController()).thenReturn(mockController);
 

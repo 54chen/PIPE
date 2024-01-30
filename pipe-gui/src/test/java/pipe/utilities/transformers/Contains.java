@@ -12,7 +12,7 @@ public class Contains {
         return new ContainsAction(edit);
     }
 
-    public static class ContainsAction extends ArgumentMatcher<UndoableEditEvent> {
+    public static class ContainsAction implements ArgumentMatcher<UndoableEditEvent> {
 
 
         private ContainsAction(UndoableEdit expectedEdit) {
@@ -22,11 +22,11 @@ public class Contains {
         private UndoableEdit expectedEdit;
 
         @Override
-        public boolean matches(Object argument) {
-            UndoableEditEvent event = (UndoableEditEvent) argument;
-            UndoableEdit edit = event.getEdit();
+        public boolean matches(UndoableEditEvent argument) {
+          UndoableEditEvent event = (UndoableEditEvent) argument;
+          UndoableEdit edit = event.getEdit();
 
-            return edit.equals(expectedEdit);
-        }
+          return edit.equals(expectedEdit);
+      }
     }
 }

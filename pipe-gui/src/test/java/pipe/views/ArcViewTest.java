@@ -53,8 +53,8 @@ public class ArcViewTest {
         target =  new DiscreteTransition("T0", "T0");
         when(mockArc.getSource()).thenReturn(source);
         when(mockArc.getTarget()).thenReturn(target);
-        when(mockArc.getStartPoint()).thenReturn(start);
-        when(mockArc.getEndPoint()).thenReturn(end);
+        // when(mockArc.getStartPoint()).thenReturn(start);
+        // when(mockArc.getEndPoint()).thenReturn(end);
         when(mockArc.getArcPoints()).thenReturn(Arrays.asList(new ArcPoint(start, false), new ArcPoint(end, false)));
         arcView = new NormalArcView<>(mockArc, mockController, parent, handler, model);
     }

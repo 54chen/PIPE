@@ -52,8 +52,8 @@ public class NormalCreatorTest {
     public void setUp() {
 
         when(mockController.getActivePetriNetController()).thenReturn(mockPetriNetController);
-        when(mockPetriNetController.getPetriNet()).thenReturn(mockNet);
-        when(mockView.getCurrentTab()).thenReturn(mockTab);
+        // when(mockPetriNetController.getPetriNet()).thenReturn(mockNet);
+        // when(mockView.getCurrentTab()).thenReturn(mockTab);
         creator = new NormalCreator(mockController);
     }
 

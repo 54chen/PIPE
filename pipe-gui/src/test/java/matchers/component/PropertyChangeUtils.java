@@ -13,7 +13,7 @@ public class PropertyChangeUtils {
         return new PropertyChangeValues(message, oldValue, newValue);
     }
 
-    public static class PropertyChangeValues extends ArgumentMatcher<PropertyChangeEvent> {
+    public static class PropertyChangeValues implements ArgumentMatcher<PropertyChangeEvent> {
         private final String message;
 
         private final Object oldValue;
@@ -27,17 +27,17 @@ public class PropertyChangeUtils {
         }
 
         @Override
-        public boolean matches(Object argument) {
-            PropertyChangeEvent event = (PropertyChangeEvent) argument;
-            if ((newValue == null && event.getNewValue() != null) || (oldValue == null && event.getOldValue() != null)) {
-                return false;
-            }
+        public boolean matches(PropertyChangeEvent argument) {
+          PropertyChangeEvent event = argument;
+          if ((newValue == null && event.getNewValue() != null) || (oldValue == null && event.getOldValue() != null)) {
+              return false;
+          }
 
-            if ((newValue == null && event.getNewValue() == null) || (oldValue == null && event.getOldValue() == null)) {
-                return event.getPropertyName().equals(message);
-            }
-            return (event.getNewValue().equals(newValue) && event.getPropertyName().equals(message)
-                    && event.getOldValue().equals(oldValue));
+          if ((newValue == null && event.getNewValue() == null) || (oldValue == null && event.getOldValue() == null)) {
+              return event.getPropertyName().equals(message);
+          }
+          return (event.getNewValue().equals(newValue) && event.getPropertyName().equals(message)
+                  && event.getOldValue().equals(oldValue));
 
         }
     }

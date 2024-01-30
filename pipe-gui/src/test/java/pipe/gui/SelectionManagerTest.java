@@ -72,8 +72,8 @@ public class SelectionManagerTest {
 
         Point dragPoint = new Point(160, 170);
         when(dragEvent.getPoint()).thenReturn(dragPoint);
-        when(dragEvent.getX()).thenReturn(dragPoint.x);
-        when(dragEvent.getY()).thenReturn(dragPoint.y);
+        // when(dragEvent.getX()).thenReturn(dragPoint.x);
+        // when(dragEvent.getY()).thenReturn(dragPoint.y);
 
         manager.mouseDragged(dragEvent);
 

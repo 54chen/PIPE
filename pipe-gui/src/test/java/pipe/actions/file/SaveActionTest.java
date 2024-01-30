@@ -73,7 +73,7 @@ public class SaveActionTest {
             throws InvocationTargetException, ParserConfigurationException, NoSuchMethodException,
             IllegalAccessException, TransformerException {
         File file = mock(File.class);
-        when(file.getAbsolutePath()).thenReturn("");
+        // when(file.getAbsolutePath()).thenReturn("");
         PetriNetName fileName = new PetriNetFileName(file);
         when(mockPetriNet.getName()).thenReturn(fileName);
 

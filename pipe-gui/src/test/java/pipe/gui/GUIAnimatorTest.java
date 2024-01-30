@@ -5,7 +5,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.lenient;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -52,10 +52,10 @@ public class GUIAnimatorTest {
 
     @Test
     public void ifStepForwardAnimatesTransition() {
-        when(mockHistory.isStepForwardAllowed()).thenReturn(true);
-        when(mockHistory.getCurrentPosition()).thenReturn(1);
+        lenient().when(mockHistory.isStepForwardAllowed()).thenReturn(true);
+        lenient().when(mockHistory.getCurrentPosition()).thenReturn(1);
         Transition transition = mock(Transition.class);
-        when(mockHistory.getTransition(2)).thenReturn(transition);
+        lenient().when(mockHistory.getTransition(2)).thenReturn(transition);
 
         animator.stepForward();
         verify(mockAnimator).fireTransition(transition);
@@ -64,10 +64,10 @@ public class GUIAnimatorTest {
 
     @Test
     public void ifCannotStepForwardDoesNotAnimateTransition() {
-        when(mockHistory.isStepForwardAllowed()).thenReturn(false);
-        when(mockHistory.getCurrentPosition()).thenReturn(1);
+        lenient().when(mockHistory.isStepForwardAllowed()).thenReturn(false);
+        lenient().when(mockHistory.getCurrentPosition()).thenReturn(1);
         Transition transition = mock(Transition.class);
-        when(mockHistory.getTransition(2)).thenReturn(transition);
+        lenient().when(mockHistory.getTransition(2)).thenReturn(transition);
 
         animator.stepForward();
         verify(mockAnimator, never()).fireTransition(transition);
@@ -76,9 +76,9 @@ public class GUIAnimatorTest {
 
     @Test
     public void ifStepBackwardAnimatesTransition() {
-        when(mockHistory.isStepBackAllowed()).thenReturn(true);
+        lenient().when(mockHistory.isStepBackAllowed()).thenReturn(true);
         Transition transition = mock(Transition.class);
-        when(mockHistory.getCurrentTransition()).thenReturn(transition);
+        lenient().when(mockHistory.getCurrentTransition()).thenReturn(transition);
 
         animator.stepBack();
         verify(mockAnimator).fireTransitionBackwards(transition);
@@ -87,9 +87,9 @@ public class GUIAnimatorTest {
 
     @Test
     public void ifCannotStepBackwardDoesNotAnimateTransition() {
-        when(mockHistory.isStepBackAllowed()).thenReturn(true);
+        lenient().when(mockHistory.isStepBackAllowed()).thenReturn(true);
         Transition transition = mock(Transition.class);
-        when(mockHistory.getCurrentTransition()).thenReturn(transition);
+        lenient().when(mockHistory.getCurrentTransition()).thenReturn(transition);
 
         animator.stepForward();
         verify(mockAnimator, never()).fireTransitionBackwards(transition);
@@ -99,7 +99,7 @@ public class GUIAnimatorTest {
     @Test
     public void doRandomFiringClearsForwardsThenAddsToHistory() {
         Transition transition = mock(Transition.class);
-        when(mockAnimator.getRandomEnabledTransition()).thenReturn(transition);
+        lenient().when(mockAnimator.getRandomEnabledTransition()).thenReturn(transition);
         animator.doRandomFiring();
         InOrder inOrder = inOrder(mockHistory);
         inOrder.verify(mockHistory, times(1)).clearStepsForward();
@@ -109,7 +109,7 @@ public class GUIAnimatorTest {
     @Test
     public void doRandomFiringFiresPetriNet() {
         Transition transition = mock(Transition.class);
-        when(mockAnimator.getRandomEnabledTransition()).thenReturn(transition);
+        lenient().when(mockAnimator.getRandomEnabledTransition()).thenReturn(transition);
         animator.doRandomFiring();
         verify(mockAnimator).fireTransition(transition);
     }

@@ -234,10 +234,10 @@ public class PetriNetControllerTest {
         controller.select(transition);
 
         int x_y_value = 40;
-        when(place.getX()).thenReturn(x_y_value);
-        when(place.getY()).thenReturn(x_y_value);
-        when(transition.getX()).thenReturn(x_y_value);
-        when(transition.getY()).thenReturn(x_y_value);
+        // when(place.getX()).thenReturn(x_y_value);
+        // when(place.getY()).thenReturn(x_y_value);
+        // when(transition.getX()).thenReturn(x_y_value);
+        // when(transition.getY()).thenReturn(x_y_value);
 
         int translate_value = 50;
         controller.translateSelected(new Point(translate_value, translate_value));
